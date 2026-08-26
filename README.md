@@ -61,29 +61,6 @@ docker exec n8n-createos-test node -e "const n=require('/home/node/.n8n/nodes/no
 docker logs --tail 100 n8n-createos-test
 ```
 
-### Manual Smoke Tests
-
-Create a workflow with a Webhook trigger, then add the CreateOS node.
-
-Recommended checks:
-
-- **System > Whoami**: verifies credentials.
-- **System > List Shapes** and **List Rootfs**: verifies catalog APIs.
-- **Code > Run Command** with `Sandbox = Create On Demand` and command `pwd`: creates a temporary sandbox, runs the command, and destroys it.
-- **Code > Run Command** with `Sandbox = Use Existing Sandbox`: verifies reuse by sandbox ID.
-- **File > Upload**: requires input binary data and an existing sandbox ID.
-- **File > Download**: reads a remote file from an existing sandbox into n8n binary data.
-
-For file testing, keep a sandbox alive:
-
-1. Create a sandbox with **Sandbox > Create**.
-2. Run a command that writes a file, for example `printf hello >/tmp/hello.txt`.
-3. Use **File > Download** with remote path `/tmp/hello.txt`.
-4. Use **File > Upload** with an input binary field, then run `ls -l <path>` in the sandbox.
-5. Destroy the sandbox when done.
-
-`File` operations are not useful after **Code > Run Command** destroys an on-demand sandbox. Use an existing sandbox ID when you need upload/download steps.
-
 ## Credentials
 
 Create a **CreateOS API** credential and set your API token. The default API base URL is:
