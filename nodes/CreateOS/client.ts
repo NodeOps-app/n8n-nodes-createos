@@ -114,23 +114,28 @@ export async function apiRequestFull(
 	options: RequestOptions = {},
 ): Promise<FullResponse> {
 	const token = getApiToken(connection.credentials);
+	const isBinaryResponse = options.encoding === 'arraybuffer';
+	const isBinaryBody = Buffer.isBuffer(options.body);
+	const headers: IDataObject = {
+		Accept: isBinaryResponse ? 'application/octet-stream' : 'application/json',
+		'User-Agent': INTEGRATION_USER_AGENT,
+		'X-Api-Key': token,
+		...options.headers,
+	};
+	if (options.body !== undefined && !isBinaryBody && typeof options.body !== 'string' && headers['Content-Type'] === undefined) {
+		headers['Content-Type'] = 'application/json';
+	}
 	const requestOptions: IHttpRequestOptions = {
 		method,
 		url: `${getBaseUrl(connection.credentials)}${path}`,
-		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
-			'User-Agent': INTEGRATION_USER_AGENT,
-			'X-Api-Key': token,
-			...options.headers,
-		},
+		headers,
 		qs: options.qs,
 		body: options.body,
 		encoding: options.encoding,
 		returnFullResponse: true,
 		ignoreHttpStatusErrors: true,
 		timeout: connection.timeoutMs,
-		json: true,
+		json: !isBinaryResponse && !isBinaryBody,
 	};
 
 	let response: FullResponse;
