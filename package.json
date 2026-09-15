@@ -4,7 +4,7 @@
   "description": "n8n community node for CreateOS sandboxes - create and manage sandboxes, run commands, transfer files, and manage templates, networks, and disks.",
   "packageManager": "pnpm@11.7.0",
   "license": "MIT",
-  "homepage": "https://github.com/createos/n8n-nodes-createos#readme",
+  "homepage": "https://github.com/NodeOps-app/n8n-nodes-createos#readme",
   "keywords": [
     "n8n-community-node-package",
     "n8n",
@@ -20,10 +20,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/createos/n8n-nodes-createos.git"
+    "url": "git+https://github.com/NodeOps-app/n8n-nodes-createos.git"
   },
   "bugs": {
-    "url": "https://github.com/createos/n8n-nodes-createos/issues"
+    "url": "https://github.com/NodeOps-app/n8n-nodes-createos/issues"
   },
   "scripts": {
     "build": "n8n-node build && node scripts/bundle-node.mjs",
@@ -56,7 +56,7 @@
     ]
   },
   "devDependencies": {
-    "@n8n/node-cli": "*",
+    "@n8n/node-cli": "^0.23.0",
     "@types/node": "^24.10.1",
     "esbuild": "^0.28.1",
     "eslint": "9.29.0",
