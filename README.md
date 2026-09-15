@@ -1,4 +1,4 @@
-# @createos/n8n-nodes-createos
+# @nodeops-createos/n8n-nodes-sandbox
 
 n8n community node for CreateOS sandboxes.
 
@@ -41,7 +41,7 @@ docker run --rm \
   -e N8N_UNVERIFIED_PACKAGES_ENABLED=true \
   -e N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true \
   -v /tmp/n8n-createos-data:/home/node/.n8n \
-  -v "$PWD:/home/node/.n8n/nodes/node_modules/@createos/n8n-nodes-createos:ro" \
+  -v "$PWD:/home/node/.n8n/nodes/node_modules/@nodeops-createos/n8n-nodes-sandbox:ro" \
   n8nio/n8n:stable
 ```
 
@@ -57,7 +57,7 @@ docker restart n8n-createos-test
 Useful checks inside the container:
 
 ```bash
-docker exec n8n-createos-test node -e "const n=require('/home/node/.n8n/nodes/node_modules/@createos/n8n-nodes-createos/dist/nodes/CreateOS/CreateOs.node.js'); console.log(new n.CreateOs().description.displayName)"
+docker exec n8n-createos-test node -e "const n=require('/home/node/.n8n/nodes/node_modules/@nodeops-createos/n8n-nodes-sandbox/dist/nodes/CreateOS/CreateOs.node.js'); console.log(new n.CreateOs().description.displayName)"
 docker logs --tail 100 n8n-createos-test
 ```
 

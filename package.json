@@ -1,5 +1,5 @@
 {
-  "name": "@createos/n8n-nodes-createos",
+  "name": "@nodeops-createos/n8n-nodes-sandbox",
   "version": "0.1.0",
   "description": "n8n community node for CreateOS sandboxes - create and manage sandboxes, run commands, transfer files, and manage templates, networks, and disks.",
   "packageManager": "pnpm@11.7.0",

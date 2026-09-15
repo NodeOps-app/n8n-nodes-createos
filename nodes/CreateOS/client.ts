@@ -11,7 +11,7 @@ import { NodeApiError } from 'n8n-workflow';
 import * as packageJson from '../../package.json';
 
 const DEFAULT_BASE_URL = 'https://api.sb.createos.sh';
-const INTEGRATION_USER_AGENT = `n8n-nodes-createos/${packageJson.version}`;
+const INTEGRATION_USER_AGENT = `n8n-nodes-sandbox/${packageJson.version}`;
 
 export interface CreateOSConnection {
 	executeFunctions: IExecuteFunctions;
