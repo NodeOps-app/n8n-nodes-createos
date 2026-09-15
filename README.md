@@ -8,6 +8,10 @@ Use this package to create and manage CreateOS sandboxes, run shell commands, tr
 
 In n8n, open **Settings > Community nodes**, then install:
 
+```text
+@createos/n8n-nodes-createos
+```
+
 For local development:
 
 ```bash
